@@ -1,0 +1,64 @@
+<div class="field-wrap">
+  <div class="stage texture">
+    <div class="team">
+      <div class="players">
+        <div *ngFor="let r of formationRows; let rowIndex = index" class="players-row">
+          <ng-container *ngFor="let playerId of lineup$ | async; let idx = index" >
+
+            <div class="player" *ngIf="rowIndex === 0 && idx < formationRows[0].length">
+              <img src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/215059/bm-pizarro.jpg">
+              {{(allPlayers$ | async)[playerId - 1].firstName}}
+              &nbsp;
+            </div>
+            <div class="player" *ngIf="rowIndex === 1 && idx > formationRows[0].length - 1 && idx < formationRows[0].length + formationRows[1].length">
+              <img src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/215059/bm-pizarro.jpg">
+              {{(allPlayers$ | async)[playerId - 1].firstName}}
+              &nbsp;
+            </div>
+            <div class="player" *ngIf="rowIndex === 2 && idx > formationRows[0].length + formationRows[1].length">
+              <img src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/215059/bm-pizarro.jpg">
+              {{(allPlayers$ | async)[playerId - 1].firstName}}
+              &nbsp;
+            </div>
+          </ng-container>
+        </div>
+        <!-- <div *ngFor="let playerId of lineup$ | async;" class="player">
+
+
+          {{(allPlayers$ | async)[playerId - 1].firstName}}
+          {{(allPlayers$ | async)[playerId - 1].lastName}}
+          {{(allPlayers$ | async)[playerId - 1].positionCategory}}
+          <img [src]="(allPlayers$ | async)[playerId - 1].image">
+
+
+          <img src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/215059/bm-pizarro.jpg">
+        </div> -->
+      </div>
+    </div>
+
+    <div class="world">
+
+      <div class="terrain ">
+        <div class="field alt"></div>
+        <div class="field ground">
+
+          <div class="field__texture field__texture--gradient"></div>
+          <div class="field__texture field__texture--grass"></div>
+          <div class="field__line field__line--goal"></div>
+          <div class="field__line field__line--goal field__line--goal--far"></div>
+          <div class="field__line field__line--outline"></div>
+          <div class="field__line field__line--penalty"></div>
+          <div class="field__line field__line--penalty-arc"></div>
+          <div class="field__line field__line--penalty-arc field__line--penalty-arc--far"></div>
+          <div class="field__line field__line--mid"></div>
+          <div class="field__line field__line--circle"></div>
+          <div class="field__line field__line--penalty field__line--penalty--far"></div>
+        </div>
+        <div class="field__side field__side--front"></div>
+        <div class="field__side field__side--left"></div>
+        <div class="field__side field__side--right"></div>
+        <div class="field__side field__side--back"></div>
+      </div>
+    </div>
+  </div>
+</div>

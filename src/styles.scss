@@ -1,1 +1,39 @@
 /* You can add global styles to this file, and also import other style files */
+@import "assets/scss/normalize/import-now";
+
+body{
+  font-family: 'Open Sans', sans-serif;
+}
+.menu-panel {
+  // border-radius: 20px;
+  // box-shadow: 0 30px 30px rgb(0 0 0 / 15%);
+  box-shadow: 0 10px 60px rgba(0, 0, 0, 0.1);
+  border:   solid rgb(78, 90, 148);
+  background: rgba(28, 39, 97, 0.3);
+  // margin:10px 20px;
+  position: relative;
+  overflow: hidden;
+  &::after {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: -210%;
+    width: 200%;
+    height: 200%;
+    opacity: 0;
+    // transform: rotate(30deg);
+    background: rgba(28, 39, 97);
+  }
+  &:hover {
+    // border-style: solid;
+    &::after{
+
+      opacity: 1;
+      top: 0;
+      left: -30%;
+      transition-property: left, opacity;
+      transition-duration: 0.7s, 0.7s;
+      transition-timing-function: ease;
+    }
+  }
+}
