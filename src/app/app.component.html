@@ -1,5 +1,6 @@
 
-<div class="app-wrap">
+<div [class.menu-visible]="menuVisible" class="app-wrap">
+  <button class="show-menu" (click)="menuVisible = !menuVisible"></button>
   <header>
     <app-header></app-header>
   </header>

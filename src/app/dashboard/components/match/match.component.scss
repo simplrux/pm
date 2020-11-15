@@ -1,9 +1,55 @@
-.match-wrap{
-    width:100%;
-    height: 100%;
-    display:flex;
-    .match{
-        flex:1;
-        // margin:10px 20px;
+.match-wrap {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  color: #fff;
+  .match {
+    flex: 1;
+    .match-inner {
+      position: relative;
+      z-index: 2;
+      padding: 10px;
+      .input-wrap {
+        margin-top: 10px;
+      }
+      mat-radio-button {
+        margin-right: 10px;
+      }
+      button {
+        width: 100%;
+        margin-top: 20px;
+        height: 45px;
+        font-size: 20px;
+        font-weight: bold;
+        color: #fff;
+        letter-spacing: 3px;
+        border: 0;
+        cursor: pointer;
+        background: rgb(131, 58, 180);
+        &:disabled{
+          cursor: not-allowed;
+          color:rgba(168, 147, 216, 0.5);
+        }
+        background: -moz-linear-gradient(
+          90deg,
+          rgba(131, 58, 180, 1) 0%,
+          rgba(253, 29, 29, 1) 50%,
+          rgba(252, 176, 69, 1) 100%
+        );
+        background: -webkit-linear-gradient(
+          90deg,
+          rgba(131, 58, 180, 1) 0%,
+          rgba(253, 29, 29, 1) 50%,
+          rgba(252, 176, 69, 1) 100%
+        );
+        background: linear-gradient(
+          90deg,
+          rgba(131, 58, 180, 1) 0%,
+          rgba(253, 29, 29, 1) 50%,
+          rgba(252, 176, 69, 1) 100%
+        );
+        filter: progid:DXImageTransform.Microsoft.gradient(startColorstr="#833ab4",endColorstr="#fcb045",GradientType=1);
+      }
     }
+  }
 }

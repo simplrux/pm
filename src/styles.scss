@@ -1,16 +1,44 @@
 /* You can add global styles to this file, and also import other style files */
 @import "assets/scss/normalize/import-now";
 
-body{
-  font-family: 'Open Sans', sans-serif;
+@mixin scrollbars(
+  $size,
+  $foreground-color,
+  $background-color: mix($foreground-color, white, 50%)
+) {
+  // For Google Chrome
+  &::-webkit-scrollbar {
+    width: $size;
+    height: $size;
+    height: 8px;
+    display: none;
+  }
+
+  &::-webkit-scrollbar-thumb {
+    background: $foreground-color;
+    border-radius: 30px;
+  }
+
+  &::-webkit-scrollbar-track {
+    background: $background-color;
+    border-radius: 30px;
+  }
+
+  // For Internet Explorer
+  & {
+    scrollbar-face-color: $foreground-color;
+    scrollbar-track-color: $background-color;
+  }
 }
+
+* {
+  @include scrollbars(10px, rgb(50, 70, 170), rgb(78, 90, 148));
+}
+
 .menu-panel {
-  // border-radius: 20px;
-  // box-shadow: 0 30px 30px rgb(0 0 0 / 15%);
   box-shadow: 0 10px 60px rgba(0, 0, 0, 0.1);
-  border:   solid rgb(78, 90, 148);
-  background: rgba(28, 39, 97, 0.3);
-  // margin:10px 20px;
+  border: solid rgb(78, 90, 148);
+  background: rgba(28, 39, 97, 0.5);
   position: relative;
   overflow: hidden;
   &::after {
@@ -22,12 +50,12 @@ body{
     height: 200%;
     opacity: 0;
     // transform: rotate(30deg);
-    background: rgba(28, 39, 97);
+    background: rgba(28, 39, 97, 0.9);
+    transition: 0.7s all;
   }
   &:hover {
     // border-style: solid;
-    &::after{
-
+    &::after {
       opacity: 1;
       top: 0;
       left: -30%;
@@ -36,4 +64,41 @@ body{
       transition-timing-function: ease;
     }
   }
+  @media screen and (max-width: 992px) {
+    background: rgba(28, 39, 97, 0.98);
+  }
+}
+
+html,
+body {
+  height: 100%;
+}
+body {
+  margin: 0;
+  font-family: Roboto, "Helvetica Neue", sans-serif;
+  overflow: hidden;
+}
+
+h1,
+.mat-h1,
+.mat-headline,
+.mat-typography h1 {
+  color: #fff;
+  padding: 10px;
+  margin: 0;
+  font-weight: bold;
+}
+.mat-form-field {
+  width: 100%;
+  mat-label {
+    color: #fff;
+  }
+}
+
+.mat-form-field-appearance-fill .mat-form-field-underline::before {
+  background-color: rgba(255, 255, 255, 0.5);
+}
+
+.mat-form-field-ripple {
+  background-color: rgba(255, 255, 255, 0.9);
 }

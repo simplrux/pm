@@ -1,47 +1,32 @@
 <div class="field-wrap">
   <div class="stage texture">
     <div class="team">
-      <div class="players">
-        <div *ngFor="let r of formationRows; let rowIndex = index" class="players-row">
-          <ng-container *ngFor="let playerId of lineup$ | async; let idx = index" >
-
-            <div class="player" *ngIf="rowIndex === 0 && idx < formationRows[0].length">
-              <img src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/215059/bm-pizarro.jpg">
-              {{(allPlayers$ | async)[playerId - 1].firstName}}
-              &nbsp;
-            </div>
-            <div class="player" *ngIf="rowIndex === 1 && idx > formationRows[0].length - 1 && idx < formationRows[0].length + formationRows[1].length">
-              <img src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/215059/bm-pizarro.jpg">
-              {{(allPlayers$ | async)[playerId - 1].firstName}}
-              &nbsp;
-            </div>
-            <div class="player" *ngIf="rowIndex === 2 && idx > formationRows[0].length + formationRows[1].length">
-              <img src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/215059/bm-pizarro.jpg">
-              {{(allPlayers$ | async)[playerId - 1].firstName}}
-              &nbsp;
-            </div>
-          </ng-container>
+      <div class="players" [class.pending]="(swaps$ | async).tempBench">
+        <div *ngFor="let l of lineup$ | async; let x = index" class="players-row">
+          <div [class.selected]="(swaps$ | async).tempLineup && (swaps$ | async).tempLineup.playerId === player" 
+          class="player" 
+          *ngFor="let player of l; let y = index">
+            <button (click)="selectPlayer(player, {x: x, y: y})"
+              class="img-wrap">
+              <span class="player-id">
+                {{(allPlayers$ | async)[player].id}}
+              </span>
+              <img [src]="(allPlayers$ | async)[player].image">
+            </button>
+            <span class="name">
+              {{(allPlayers$ | async)[player].firstName[0]}}.
+              {{(allPlayers$ | async)[player].lastName}} <span>
+                {{(allPlayers$ | async)[player].positionCategory[0]}}
+              </span>
+            </span>
+          </div>
         </div>
-        <!-- <div *ngFor="let playerId of lineup$ | async;" class="player">
-
-
-          {{(allPlayers$ | async)[playerId - 1].firstName}}
-          {{(allPlayers$ | async)[playerId - 1].lastName}}
-          {{(allPlayers$ | async)[playerId - 1].positionCategory}}
-          <img [src]="(allPlayers$ | async)[playerId - 1].image">
-
-
-          <img src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/215059/bm-pizarro.jpg">
-        </div> -->
       </div>
     </div>
-
     <div class="world">
-
       <div class="terrain ">
         <div class="field alt"></div>
         <div class="field ground">
-
           <div class="field__texture field__texture--gradient"></div>
           <div class="field__texture field__texture--grass"></div>
           <div class="field__line field__line--goal"></div>

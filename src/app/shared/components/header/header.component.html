@@ -1,3 +1,13 @@
 <nav class="header-wrap">
-    <ul class="header menu-panel"></ul>
+    <div class="header menu-panel">
+        <ul>
+            <li>
+                <img [src]="(teamData$ | async).logoImage">
+            </li>
+            <li>
+                {{(teamData$ | async).teamName}}
+            </li>
+        </ul>
+    
+    </div>
 </nav>

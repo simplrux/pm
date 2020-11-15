@@ -1,10 +1,16 @@
 <div class="formation-wrap">
-    <div class="formation menu-panel">
-        <drag-scroll>
-            <span *ngFor="let ft of formationTypes$ | async">
-                {{ft.name}}
-            </span>
-        </drag-scroll>
-    </div>
-</div>
+  <div class="formations menu-panel">
+    <div class="formations-carousel">
+      <drag-scroll>
+          <button 
+          [class.selected]="ft.name === (selectedFormation$ | async)"
+            (click)="selectFormation(ft.name)" class="formation" drag-scroll-item 
+            *ngFor="let ft of formationTypes$ | async">
+              {{ft.name}}
+              <img src="../../../../assets/images/up-and-down.svg">
+          </button>
 
+      </drag-scroll>
+    </div>
+  </div>
+</div>

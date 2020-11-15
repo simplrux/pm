@@ -1,5 +1,52 @@
 <div class="match-wrap">
-    <div class="match menu-panel">
-        
-    </div>
+  <div class="match menu-panel">
+    <form [formGroup]="form" class="match-inner">
+      <fieldset>
+        <legend>
+          <h1>
+            Match Details
+          </h1>
+        </legend>
+
+        <mat-form-field appearance="fill">
+          <mat-label>Rival Team Name</mat-label>
+          <input required formControlName="rivalName" matInput>
+        </mat-form-field>
+        <label>Rival Team Logo </label>
+        <div class="input-wrap">
+          <input (change)="handleFile($event)" type="file">
+        </div>
+      </fieldset>
+
+      <fieldset formGroupName="score">
+        <legend>
+          <h1>Score</h1>
+        </legend>
+        <mat-form-field appearance="fill">
+          <mat-label>My Team</mat-label>
+          <input required formControlName="myTeam" type="number" matInput>
+        </mat-form-field>
+        <mat-form-field appearance="fill">
+          <mat-label>{{'Rival Team'}}</mat-label>
+          <input required formControlName="rival" type="number" matInput>
+        </mat-form-field>
+
+      </fieldset>
+      <fieldset>
+        <legend>
+          <h1>Match Location</h1>
+        </legend>
+        <mat-radio-group required formControlName="matchLocation" aria-label="Select an option">
+          <mat-radio-button value="Home">Home</mat-radio-button>
+          <mat-radio-button value="Away">Away</mat-radio-button>
+        </mat-radio-group>
+
+      </fieldset>
+
+      <!-- {{form.value | json}}
+      {{form.invalid}} -->
+
+      <button (click)="submit()" [disabled]="form.invalid" type="button">SUBMIT</button>
+    </form>
+  </div>
 </div>

@@ -16,22 +16,40 @@ export interface TeamDetails {
     logoImage: string;
 }
 export interface Players {
-        allPlayers: Player[];
-        lineup: number[];
-        bench: number[];
+    allPlayers: Player[];
+    lineup: any[];
+    bench: number[];
+}
+export interface DashboardState {
+    matchMetadata: MatchMetaData;
+    swaps: Swaps;
+}
+export interface MatchMetaData {
+    rivelName: string;
+    rivelLogoImage: string;
+    score: { myTeam: number, rival: number };
+    matchLocation: string;
+}
+export interface MatchData {
+    selectedFormation: string;
+    players: Players;
+}
+export interface Swaps {
+    tempBench: { playerId: number; index: number; };
+    tempLineup: { playerId: number; xy: { x: number; y: number; } };
 }
 
-export interface MatchData {
+export interface MatchDataJson {
     matchMetadata: {
-        rivelName: string,
-        rivelLogoImage: string
-        score: { myTeam: number, rival: number };
+        rivelName: string;
+        rivelLogoImage: string;
+        score: { myTeam: number; rival: number; },
         matchLocation: string
     };
     selectedFormation: string;
     players: Players;
-
 }
+
 
 
 

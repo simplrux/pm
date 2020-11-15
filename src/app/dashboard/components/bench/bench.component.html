@@ -1,3 +1,31 @@
 <div class="bench-wrap">
-    <div class="bench menu-panel"></div>
+  <div class="bench menu-panel">
+    <div class="bench-inner">
+      <h1>Bench</h1>
+      <ul [class.pending]="(swaps$ | async).tempLineup" class="players">
+        <li *ngFor="let id of bench$ | async; let idx = index">
+          <button [class.selected]="(swaps$ | async).tempBench && (swaps$ | async).tempBench.playerId === (players$ | async)[id -1].id"
+          (click)="selectPlayer(id, idx)" *ngIf="(players$ | async)[id]">
+          {{(players$ | async)[id].id}}. {{(players$ | async)[id].firstName}} 
+          {{(players$ | async)[id].lastName}}
+          <sup>{{(players$ | async)[id].positionCategory}}</sup>
+          <!-- <img *ngIf="(players$ | async)[id].image" [src]="(players$ | async)[id].image"> -->
+          </button>
+        </li>
+      </ul>
+      <h1>Lineup</h1>
+      <ul class="players lineup">
+        <li *ngFor="let l of lineup$ | async; let x = index;">
+          <ng-container *ngFor="let player of l; let y = index;">
+            <button [disabled]="!(swaps$ | async).tempBench" 
+            (click)="selectLineup(player, {x: x, y: y})" *ngIf="(players$ | async)[player]">
+              {{(players$ | async)[player -1].id}}. {{(players$ | async)[player].firstName}} 
+              {{(players$ | async)[player].lastName}}
+              <sup>{{(players$ | async)[player].positionCategory}}</sup>
+            </button>
+          </ng-container>
+        </li>
+      </ul>
+    </div>
+  </div>
 </div>
