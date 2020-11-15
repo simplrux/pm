@@ -69,6 +69,8 @@ aside {
 .show-menu {
   display: none;
   position: fixed;
+  align-items: center;
+  justify-content: center;
   border: none;
   width: 50px;
   height: 50px;
@@ -78,7 +80,10 @@ aside {
   right: 20px;
   box-shadow: 1px 1px 30px rgba(0, 0, 0, 0.349);
   border-radius: 50%;
+  img {
+    max-width: 30px;
+  }
   @media screen and (max-width: 992px) {
-    display: block;
+    display: flex;
   }
 }
