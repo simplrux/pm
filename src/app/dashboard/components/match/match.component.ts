@@ -1,11 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { Store } from '@ngrx/store';
-import { Observable } from 'rxjs';
-import { MatchMetaData, TeamDetails } from 'src/app/shared/models/match';
 import { MatchPageDataService } from 'src/app/shared/services/match-page-data.service';
-import { loadTeamData, submitForm } from '../../store/dashboard.actions';
-import { selectMatchData } from '../../store/dashboard.selectors';
+import {  submitForm } from '../../store/dashboard.actions';
 
 @Component({
   selector: 'app-match',
